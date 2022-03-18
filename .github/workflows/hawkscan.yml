@@ -1,7 +1,8 @@
 name: HawkScan
 on:
   push:
-  pull_request:
+    branches:
+      - stackhawk
 jobs:
   hawkscan:
     name: HawkScan
@@ -9,6 +10,10 @@ jobs:
     steps:
       - name: Clone repo
         uses: actions/checkout@v2
+      - name: Docker Build
+        run: "docker build -t avinashupadhya99/kubegen:${{ github.run_number }} ."
+      - name: Start Application
+        run: "docker run -d --rm --name kubegen -p 3000:3000 avinashupadhya99/kubegen:${{ github.run_number }}"
       - name: Run HawkScan
         uses: stackhawk/hawkscan-action@v1.3.0
         with:
