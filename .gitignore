@@ -59,3 +59,8 @@ typings/
 
 # next.js build output
 .next
+
+# dagger
+cue.mod/pkg
+cue.mod/*.mod
+cue.mod/*.sum
