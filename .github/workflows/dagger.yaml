@@ -3,7 +3,7 @@ name: dagger
 on:
   push:
     branches:
-      - main
+      - dagger
 
 jobs:
   deploy:
@@ -15,8 +15,8 @@ jobs:
         uses: dagger/dagger-for-github@v3
         with:
           cmds: |
-          project update
-          do build
+            project update
+            do build
         env:
           DOCKER_HUB_USERNAME: avinashupadhya99
           DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
