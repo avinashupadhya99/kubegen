@@ -60,7 +60,7 @@ dagger.#Plan & {
             dockerBuild: docker.#Dockerfile & {
                 // This is the Dockerfile context
                 source: client.filesystem.".".read.contents
-                // env: HACK: "\(buildTest.success)" // <== HACK: CHAINING of action. Esnures the action is executed after buildTest is completed
+                label: HACK: "\(buildTest.success)" // <== HACK: CHAINING of action. Esnures the action is executed after buildTest is completed
             }
 
             push: docker.#Push & {
